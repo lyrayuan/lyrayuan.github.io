@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Method Checker</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Payment Method Checker</h1>
+    <div id="question1">
+        <p>Can you use octopus/cash to pay in-store?</p>
+        <button onclick="answer1('yes')">Yes</button>
+        <button onclick="answer1('no')">No</button>
+    </div>
+
+    <div id="octopusCash" class="hidden">
+        <p>• Keep the receipt</p>
+        <p>• Refer to sheet 2. Please upload the receipt.</p>
+        <p>Unacceptable Receipts:</p>
+        <ul>
+            <li>Receipt missing company name or stamp</li>
+            <li>Re-printed or photocopied receipt</li>
+            <li>Hand-written receipt without company stamp</li>
+            <li>Altered receipt with correction pen</li>
+            <li>Altered receipt without company chop</li>
+            <li>Invoice missing PAID stamp/signature</li>
+            <li>Delivery note</li>
+            <li>Credit card payment advice</li>
+            <li>Statement with outstanding balance</li>
+        </ul>
+    </div>
+
+    <div id="question2" class="hidden">
+        <p>Can you use a credit card with your NAME on it to pay in-store?</p>
+        <button onclick="answer2('yes')">Yes</button>
+        <button onclick="answer2('no')">No</button>
+    </div>
+
+    <div id="creditCard" class="hidden">
+        <p>• KEEP THE RECEIPT</p>
+        <p>• REFER TO SHEET 3</p>
+        <p>Unacceptable Receipts:</p>
+        <ul>
+            <li>Receipt missing company name or stamp</li>
+            <li>Re-printed or photocopied receipt</li>
+            <li>Hand-written receipt without company stamp</li>
+            <li>Altered receipt with correction pen</li>
+            <li>Altered receipt without company chop</li>
+            <li>Invoice missing PAID stamp/signature</li>
+            <li>Delivery note</li>
+            <li>Credit card payment advice</li>
+            <li>Statement with outstanding balance</li>
+        </ul>
+    </div>
+
+    <div id="question3" class="hidden">
+        <p>Can you use PayMe?</p>
+        <button onclick="answer3('yes')">Yes</button>
+        <button onclick="answer3('no')">No</button>
+    </div>
+
+    <div id="payMe" class="hidden">
+        <p>Proceed with PayMe payment.</p>
+    </div>
+
+    <div id="noOptions" class="hidden">
+        <p>No available payment options.</p>
+    </div>
+
+    <script>
+        function answer1(response) {
+            document.getElementById('question1').classList.add('hidden');
+            if (response === 'yes') {
+                document.getElementById('octopusCash').classList.remove('hidden');
+            } else {
+                document.getElementById('question2').classList.remove('hidden');
+            }
+        }
+
+        function answer2(response) {
+            document.getElementById('question2').classList.add('hidden');
+            if (response === 'yes') {
+                document.getElementById('creditCard').classList.remove('hidden');
+            } else {
+                document.getElementById('question3').classList.remove('hidden');
+            }
+        }
+
+        function answer3(response) {
+            document.getElementById('question3').classList.add('hidden');
+            if (response === 'yes') {
+                document.getElementById('payMe').classList.remove('hidden');
+            } else {
+                document.getElementById('noOptions').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
